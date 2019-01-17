@@ -1,4 +1,4 @@
-# Tests Unitaire avec JUnit
+# Tests Unitaires avec JUnit
 
 JUnit est un framework de test unitaire dévelopé pour Java.
 
