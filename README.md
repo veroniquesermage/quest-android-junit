@@ -1,26 +1,26 @@
 # Tests Unitaires avec JUnit
 
-JUnit est un framework de test unitaire dévelopé pour Java.
+JUnit est un framework de test unitaire développé pour Java.
 
 JUnit définit deux types de fichiers de tests :
 * Les TestCase (cas de test) sont des classes contenant un certain nombre de méthodes de tests. Un TestCase sert généralement à tester le bon fonctionnement d'une classe.
 * Une TestSuite permet d'exécuter un certain nombre de TestCase déjà définis.
 
-Il existe plusieurs annotations dans JUnit qu'il est bon de connaitre.
+## Quelques annotations:
 
-## @Before
+### @Before
 - La méthode annotée par @Before est appelée avant chaque méthode de test.
 
-## @After
+### @After
 - La méthode annotée par @After est appelée après chaque test.
   
-## @BeforeClass
+### @BeforeClass
 - La méthode annotée par @BeforeClass est appelée au lancement du testCase.
 
-## @AfterClass
+### @AfterClass
 - La méthode annotée par @AfterClass est appelée tout à la fin du testCase.
  
- ## @Test
+### @Test
  - Tous les tests sont des méthodes annotées par @Test, qui font des traitements et vérifient le bon comportement des classes testées par des méthodes assert***(), toute assertion non vérifiée est signalée comme défaillante. Un cas de test (TestCase) peut avoir plusieurs sections @Test. Si une section @Test échoue, le TestCase ne s'arrête pas mais continue sur les sections @Test suivantes (s'il y en a).
 
 En voici un exemple:
