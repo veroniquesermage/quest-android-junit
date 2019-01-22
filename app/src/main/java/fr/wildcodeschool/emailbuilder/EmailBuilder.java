@@ -3,7 +3,7 @@ package fr.wildcodeschool.emailbuilder;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("unused")
-public class EmailBuilder {
+class EmailBuilder {
   private String mUserName;
   private String mDomain;
   private String mSubDomain;
@@ -13,12 +13,12 @@ public class EmailBuilder {
    * Email validation pattern.
    */
   private static final Pattern EMAIL_PATTERN = Pattern.compile(
-    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{0,256}" +
+    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
       "\\@" +
-      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+      "[a-zA-Z0-9][a-zA-Z0-9\\-]{1,64}" +
       "(" +
       "\\." +
-      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+      "[a-zA-Z0-9][a-zA-Z0-9\\-]{1,25}" +
       ")+"
   );
 
@@ -29,7 +29,29 @@ public class EmailBuilder {
    * @return The build email address
    */
   public String getEmail() {
-    return mUserName + '@' + mDomain + '.' + mSubDomain + '.' + mTld;
+
+      StringBuilder sb = new StringBuilder();
+
+      sb.append(isNotEmptyOrNull(mUserName) ? mUserName : "");
+      sb.append(isNotEmptyOrNull(mDomain) ?('@') + mDomain : "" );
+
+
+      if (isNotEmptyOrNull(mSubDomain) && isNotEmptyOrNull(mDomain)){
+          sb.append('.').append(mSubDomain);
+      } else if (isNotEmptyOrNull(mSubDomain) && null == mDomain){
+          sb.append('@').append(mSubDomain);
+      } else {
+          sb.append("");
+      }
+
+      sb.append(isNotEmptyOrNull(mTld) && (isNotEmptyOrNull(mDomain) || isNotEmptyOrNull(mSubDomain)) ? '.' + mTld : "");
+
+    return sb.toString();
+  }
+
+  private boolean isNotEmptyOrNull (String value){
+
+      return null != value && !value.isEmpty();
   }
 
   /**
