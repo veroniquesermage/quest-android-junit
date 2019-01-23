@@ -122,7 +122,6 @@ public class EmailBuilderTest {
   public void emailBuilder_isValidEmailNoUsername_ReturnsFalse() {
     EmailBuilder emailBuilder = new EmailBuilder
             .Builder()
-            .setUserName("")
             .setDomain("email")
             .setTld("com")
             .build();
@@ -135,7 +134,6 @@ public class EmailBuilderTest {
       EmailBuilder emailBuilder = new EmailBuilder
               .Builder()
               .setUserName("name")
-              .setDomain("")
               .setTld("com")
               .build();
 
@@ -148,7 +146,6 @@ public class EmailBuilderTest {
               .Builder()
               .setUserName("name")
               .setDomain("email")
-              .setTld("")
               .build();
 
       assertFalse( EmailBuilder.isValidEmail(emailBuilder.getEmail()));
